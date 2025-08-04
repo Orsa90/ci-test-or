@@ -13,11 +13,12 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@v3
-      
-    - name: Break the pipeline
+
+    - name: Break with invalid command
       run: |
-        echo "Failing on purpose"
-        exit 1
+        echo "Trying to run something that doesn't exist"
+        notarealcommand123
+
 
 
     - name: Run test
