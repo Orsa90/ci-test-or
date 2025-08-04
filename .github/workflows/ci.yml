@@ -14,11 +14,9 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v3
 
-    - name: Break with invalid command
+    - name: Celebrate recovery
       run: |
-        echo "Trying to run something that doesn't exist"
-        notarealcommand123
-
+        echo "Pipeline fixed and back in action"
 
 
     - name: Run test
