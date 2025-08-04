@@ -14,6 +14,17 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v3
 
+    - name: Simulate environment check
+      run: |
+        echo "Checking for required files..."
+        if [ -f README.md ]; then
+          echo "README exists. ✅"
+        else
+          echo "README missing! ❌"
+          exit 1
+        fi
+
+
     - name: Run test
       run: |
         echo "This is your first pipeline, Or!"
