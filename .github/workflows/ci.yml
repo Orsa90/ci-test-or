@@ -14,9 +14,15 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v3
 
-    - name: Celebrate recovery
+    - name: Simulate environment check
       run: |
-        echo "Pipeline fixed and back in action"
+        echo "Checking for required files..."
+        if [ -f README.md ]; then
+          echo "README exists. ✅"
+        else
+          echo "README missing! ❌"
+          exit 1
+        fi
 
 
     - name: Run test
