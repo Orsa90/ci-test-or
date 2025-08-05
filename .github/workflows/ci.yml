@@ -1,15 +1,14 @@
-name: Simple CI Test - V2
+name: Simple CI Test - V3
 
 on:
+  pull_request:
+    branches:
+      - main
   push:
     branches:
       - main
       - feature/*
-
-  pull_request:
-    branches:
-      -main
-      - feature/*
+      
       
 jobs:
   build:
