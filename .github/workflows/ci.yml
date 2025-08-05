@@ -1,4 +1,4 @@
-name: Simple CI Test - Force Detect
+name: Simple CI Test - V2
 
 on:
   push:
