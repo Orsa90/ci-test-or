@@ -8,8 +8,8 @@ on:
     branches:
       - main
       - feature/*
-      
-      
+
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -33,3 +33,9 @@ jobs:
       run: |
         echo "This is your first pipeline, Or!"
         echo "CI is working. Let's gooo 💥"
+
+    - name: Deploy (simulated)
+      if: success()  # Only runs if earlier steps succeeded
+      run: |
+        echo "🎯 CI passed. Deploying to production..."
+        echo "✅ Code deployed successfully (simulated)"
