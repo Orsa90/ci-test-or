@@ -1,5 +1,4 @@
 name: Simple CI Test - V3
-# Deploy again - comment
 
 on:
   pull_request:
@@ -34,3 +33,9 @@ jobs:
       run: |
         echo "This is your first pipeline, Or!"
         echo "CI is working. Let's gooo 💥"
+
+    - name: Deploy (simulated)
+      if: success()
+      run: |
+        echo "🎯 CI passed. Deploying to production..."
+        echo "✅ Code deployed successfully (simulated)"
