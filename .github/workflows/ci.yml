@@ -39,3 +39,9 @@ jobs:
       run: |
         echo "🎯 CI passed. Deploying to production..."
         echo "✅ Code deployed successfully (simulated)"
+
+     - name: Deploy (simulated)
+       if: github.ref == 'refs/heads/main'
+       run: |
+        echo "🎯 CI passed. Deploying to production from MAIN..."
+        echo "✅ Code deployed successfully (simulated)"
