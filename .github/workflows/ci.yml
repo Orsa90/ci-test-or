@@ -34,7 +34,12 @@ jobs:
         echo "This is your first pipeline, Or!"
         echo "CI is working. Let's gooo 💥"
 
-    - name: Deploy (simulated)
-      if: success() && github.ref == 'refs/heads/main'
+    - name: Deploy (environment aware)
+      if: success()
       run: |
-        echo "Deploying to production from MAIN..."
+        echo "🎯 CI passed. Determining environment..."
+        if [[ "${GITHUB_REF}" == "refs/heads/main" ]]; then
+          echo "🚀 Deploying to PRODUCTION environment"
+        else
+          echo "🧪 Deploying to STAGING environment"
+        fi
