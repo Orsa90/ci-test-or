@@ -40,7 +40,7 @@ jobs:
 
     - name: Run deploy script
       if: success()
-      run: ./scripts/deploy.sh
+      run: bash ./scripts/deploy.sh
 
     - name: Rollback on Failure
       if: failure()
