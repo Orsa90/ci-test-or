@@ -38,18 +38,9 @@ jobs:
         echo "This is your first pipeline, Or!"
         echo "CI is working. Let's gooo 💥"
 
-    - name: Simulated Deploy (with failure)
+    - name: Run deploy script
       if: success()
-      run: |
-        echo "🎯 CI passed. Determining environment..."
-        if [[ "${GITHUB_REF}" == "refs/heads/main" ]]; then
-          echo "🚀 Deploying to PRODUCTION environment"
-        else
-          echo "🧪 Deploying to STAGING environment"
-        fi
-
-        echo "🚧 Simulating deploy failure now..."
-        exit 0  # simulate failure
+      run: ./scripts/deploy.sh
 
     - name: Rollback on Failure
       if: failure()
