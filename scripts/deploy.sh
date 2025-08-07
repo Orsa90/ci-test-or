@@ -1,8 +1,8 @@
 #!/bin/bash
 
-echo "🎯 CI passed. Determining environment..."
+echo "🎯 CI passed. Deploying to environment: $DEPLOY_ENV"
 
-if [[ "${GITHUB_REF}" == "refs/heads/main" ]]; then
+if [[ "$DEPLOY_ENV" == "production" ]]; then
   echo "🚀 Deploying to PRODUCTION environment"
 else
   echo "🧪 Deploying to STAGING environment"

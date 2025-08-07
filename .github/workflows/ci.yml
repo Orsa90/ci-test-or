@@ -40,6 +40,8 @@ jobs:
 
     - name: Run deploy script
       if: success()
+      env:
+        DEPLOY_ENV: ${{ secrets.DEPLOY_ENV }}
       run: bash ./scripts/deploy.sh
 
     - name: Rollback on Failure
