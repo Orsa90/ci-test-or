@@ -1,5 +1,4 @@
 name: Simple CI Test - V3
-# Deploy again - comment
 
 on:
   pull_request:
@@ -9,15 +8,21 @@ on:
     branches:
       - main
       - feature/*
-
-
+      
+      
 jobs:
   build:
+    name: ci-sniper
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repo
       uses: actions/checkout@v3
+
+    - name: Use Node.js (force GitHub to wake up)
+      uses: actions/setup-node@v3
+      with:
+       node-version: '18'
 
     - name: Simulate environment check
       run: |
@@ -35,8 +40,12 @@ jobs:
         echo "This is your first pipeline, Or!"
         echo "CI is working. Let's gooo 💥"
 
-    - name: Deploy (simulated)
-      if: success()  # Only runs if earlier steps succeeded
+    - name: Deploy (environment aware)
+      if: success()
       run: |
-        echo "🎯 CI passed. Deploying to production..."
-        echo "✅ Code deployed successfully (simulated)"
+        echo "🎯 CI passed. Determining environment..."
+        if [[ "${GITHUB_REF}" == "refs/heads/main" ]]; then
+          echo "🚀 Deploying to PRODUCTION environment"
+        else
+          echo "🧪 Deploying to STAGING environment"
+        fi
