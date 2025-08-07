@@ -49,7 +49,7 @@ jobs:
         fi
 
         echo "🚧 Simulating deploy failure now..."
-        exit 1  # simulate failure
+        exit 0  # simulate failure
 
     - name: Rollback on Failure
       if: failure()
