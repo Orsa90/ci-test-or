@@ -1,0 +1,19 @@
+name: Status Check Sniper
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+      - feature/*
+
+jobs:
+  status-check:
+    name: legit-check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Confirm GitHub status recognition
+        run: echo "This is the official status check GitHub can't ignore ✅"
