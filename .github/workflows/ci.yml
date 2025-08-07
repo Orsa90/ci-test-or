@@ -8,8 +8,7 @@ on:
     branches:
       - main
       - feature/*
-      
-      
+
 jobs:
   build:
     name: ci-sniper
@@ -22,7 +21,7 @@ jobs:
     - name: Use Node.js (force GitHub to wake up)
       uses: actions/setup-node@v3
       with:
-       node-version: '18'
+        node-version: '18'
 
     - name: Simulate environment check
       run: |
@@ -34,13 +33,12 @@ jobs:
           exit 1
         fi
 
-
     - name: Run test
       run: |
         echo "This is your first pipeline, Or!"
         echo "CI is working. Let's gooo 💥"
 
-    - name: Deploy (environment aware)
+    - name: Simulated Deploy (with failure)
       if: success()
       run: |
         echo "🎯 CI passed. Determining environment..."
@@ -49,3 +47,12 @@ jobs:
         else
           echo "🧪 Deploying to STAGING environment"
         fi
+
+        echo "🚧 Simulating deploy failure now..."
+        exit 0  # simulate failure
+
+    - name: Rollback on Failure
+      if: failure()
+      run: |
+        echo "❌ Deploy failed. Triggering rollback..."
+        echo "🔁 Restoring last known good state"
