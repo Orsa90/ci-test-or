@@ -19,6 +19,11 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v3
 
+    - name: Use Node.js (force GitHub to wake up)
+      uses: actions/setup-node@v3
+      with:
+       node-version: '18'
+
     - name: Simulate environment check
       run: |
         echo "Checking for required files..."
