@@ -1,6 +1,7 @@
 name: Simple CI Test - V3
 
 on:
+  workflow_dispatch:
   pull_request:
     branches:
       - main
