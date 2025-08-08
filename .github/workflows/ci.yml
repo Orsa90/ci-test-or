@@ -13,6 +13,8 @@ jobs:
   build:
     name: ci-sniper
     runs-on: ubuntu-latest
+    environment:
+     name: production
 
     steps:
     - name: Checkout repo
@@ -43,9 +45,3 @@ jobs:
       env:
         DEPLOY_ENV: ${{ secrets.DEPLOY_ENV }}
       run: bash ./scripts/deploy.sh
-
-    - name: Rollback on Failure
-      if: failure()
-      run: |
-        echo "❌ Deploy failed. Triggering rollback..."
-        echo "🔁 Restoring last known good state"
