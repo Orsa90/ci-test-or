@@ -40,6 +40,8 @@ jobs:
 
     - name: Run deploy script
       if: success()
+      environment:
+        name: production
       env:
         DEPLOY_ENV: ${{ secrets.DEPLOY_ENV }}
       run: bash ./scripts/deploy.sh
