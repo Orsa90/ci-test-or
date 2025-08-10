@@ -46,3 +46,9 @@ jobs:
       env:
         DEPLOY_ENV: ${{ secrets.DEPLOY_ENV }}
       run: bash ./scripts/deploy.sh
+    - name: Send notification
+      if: always()
+      run: |
+        echo "📣 Deployment completed on branch: $GITHUB_REF"
+        echo "✅ Status: ${{ job.status }}"
+
